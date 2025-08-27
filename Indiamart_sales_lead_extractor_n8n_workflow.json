@@ -1,0 +1,378 @@
+{
+  "name": "Indiamart-sales-lead",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "id": "968fed57-4127-484d-bd9a-40806b162b93",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -420,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://mapi.indiamart.com/wservce/crm/crmListing/v2/?glusr_crm_key=mRyyF7ls4XvJTves7nSK7liNq1rBnDZgXw==",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3e1d07d-909f-4f73-8ce2-de8c4f071c8b",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1gJ6J1qAy8YxMFsbtaZVbvYAfwGq5xEG8P9HvhLe46K0",
+          "mode": "list",
+          "cachedResultName": "Indiamart-Lead",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gJ6J1qAy8YxMFsbtaZVbvYAfwGq5xEG8P9HvhLe46K0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1gJ6J1qAy8YxMFsbtaZVbvYAfwGq5xEG8P9HvhLe46K0/edit#gid=0",
+          "mode": "url",
+          "__regex": "https:\\/\\/docs\\.google\\.com/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+\\/edit\\#gid=([0-9]+)"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "UNIQUE_QUERY_ID": "={{ $json.UNIQUE_QUERY_ID }}",
+            "QUERY_TYPE": "={{ $json.QUERY_TYPE }}",
+            "QUERY_TIME": "={{ $json.QUERY_TIME }}",
+            "SUBJECT": "={{ $json.SUBJECT }}",
+            "SENDER_MOBILE": "={{ $json.SENDER_MOBILE }}",
+            "SENDER_NAME": "={{ $json.SENDER_NAME }}",
+            "SENDER_COMPANY": "={{ $json.SENDER_COMPANY }}",
+            "QUERY_MESSAGE": "={{ $json.QUERY_MESSAGE }}",
+            "SENDER_STATE": "={{ $json.SENDER_STATE }}",
+            "SENDER_EMAIL": "={{ $json.SENDER_EMAIL }}",
+            "QUERY_PRODUCT_NAME": "={{ $json.QUERY_PRODUCT_NAME }}",
+            "SENDER_ADDRESS": "={{ $json.SENDER_ADDRESS }}",
+            "SENDER_CITY": "={{ $json.SENDER_CITY }}",
+            "SENDER_PINCODE": "={{ $json.SENDER_PINCODE }}",
+            "SENDER_MOBILE_ALT": "={{ $json.SENDER_MOBILE_ALT }}",
+            "SENDER_PHONE": "={{ $json.SENDER_PHONE }}",
+            "SENDER_PHONE_ALT": "={{ $json.SENDER_PHONE_ALT }}",
+            "SENDER_EMAIL_ALT": "={{ $json.SENDER_EMAIL_ALT }}",
+            "QUERY_MCAT_NAME": "={{ $json.QUERY_MCAT_NAME }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "UNIQUE_QUERY_ID",
+              "displayName": "UNIQUE_QUERY_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "QUERY_TYPE",
+              "displayName": "QUERY_TYPE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "QUERY_TIME",
+              "displayName": "QUERY_TIME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SUBJECT",
+              "displayName": "SUBJECT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_MOBILE",
+              "displayName": "SENDER_MOBILE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_NAME",
+              "displayName": "SENDER_NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_COMPANY",
+              "displayName": "SENDER_COMPANY",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "QUERY_MESSAGE",
+              "displayName": "QUERY_MESSAGE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "STATUS",
+              "displayName": "STATUS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "NOTES",
+              "displayName": "NOTES",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_STATE",
+              "displayName": "SENDER_STATE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_EMAIL",
+              "displayName": "SENDER_EMAIL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "QUERY_PRODUCT_NAME",
+              "displayName": "QUERY_PRODUCT_NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_ADDRESS",
+              "displayName": "SENDER_ADDRESS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_CITY",
+              "displayName": "SENDER_CITY",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_PINCODE",
+              "displayName": "SENDER_PINCODE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_MOBILE_ALT",
+              "displayName": "SENDER_MOBILE_ALT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_PHONE",
+              "displayName": "SENDER_PHONE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_PHONE_ALT",
+              "displayName": "SENDER_PHONE_ALT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENDER_EMAIL_ALT",
+              "displayName": "SENDER_EMAIL_ALT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "QUERY_MCAT_NAME",
+              "displayName": "QUERY_MCAT_NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e2a49709-5d31-4fc0-8c4a-913db2f11dd5",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        240,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ng4W60vhvQqPkvIi",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "RESPONSE",
+        "options": {}
+      },
+      "id": "b88b1e5d-fcd4-440e-b027-64b452f9c04c",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        20,
+        300
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Calcutta",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "5c913d47-e522-43be-9306-154b84a77eda",
+  "id": "zTaYBMLXcy87EU8c",
+  "meta": {
+    "instanceId": "9712a5e634822549c83f5ff72eb6bf76ec2a72b51e237cb63d838e523a93e847"
+  },
+  "tags": []
+}
